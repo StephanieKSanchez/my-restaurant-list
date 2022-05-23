@@ -1,14 +1,23 @@
 
 import './App.css';
+import {  Layout } from 'antd'
 import RestaurantList from './components/RestaurantList';
+import Menubar from './components/Menubar';
+
+
+const { Header, Content } = Layout;
 
 function App() {
   return (
-    <>
-      <h1>
+    <Layout className='layout'>
+      <Header>
+        <Menubar />
+      </Header>
+      <Content>
         <RestaurantList />
-      </h1>
-    </>
+      </Content>
+        
+      </Layout>
   );
 }
 
