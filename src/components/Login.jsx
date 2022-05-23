@@ -12,13 +12,13 @@ const firebaseConfig = {
   };
 
 
-export default function Login() {
+export default function Login({setUser}) {
     const handleLogin = ({email, password}) => {
         const app = initializeApp(firebaseConfig); // connect to firebase
         const auth = getAuth(app) // connect to firebase authentication
         // login with Firebase Auth
         signInWithEmailAndPassword(auth, email, password)
-            .then(res => console.log(res.user))
+            .then(res => setUser(res.user))
             .catch(console.error)
     }
     const handleGoogleLogin = () => {
@@ -26,7 +26,7 @@ export default function Login() {
         const auth = getAuth(app)
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
-        .then(res => console.log(res.user))
+        .then(res => setUser(res.user))
         .catch(console.error)
     }
   return (

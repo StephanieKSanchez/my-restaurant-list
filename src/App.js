@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import Menubar from './components/Menubar';
@@ -9,6 +10,7 @@ import './App.css';
 const { Header, Content } = Layout;
 
 function App() {
+  const [user, setUser] = useState();
   return (
     <BrowserRouter>
       <Layout className='layout'>
@@ -19,8 +21,7 @@ function App() {
           <Routes>
             <Route path='/restaurants/:restaurantId' element={<RestaurantPage />} />
             <Route path='/random' element={<h1>Random</h1>} />
-            <Route path='/add' element={<h1>Add Restaurant</h1>} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/add' element={!user ?  <Login setUser={setUser} /> : <h1>Add Restaurant</h1>} />
             <Route path='/' element={<RestaurantList />} />
           </Routes>
         </Content>
