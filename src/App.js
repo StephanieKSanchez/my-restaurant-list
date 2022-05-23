@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import Menubar from './components/Menubar';
@@ -9,10 +9,13 @@ import './App.css';
 
 const { Header, Content } = Layout;
 
+export const UserContext = createContext(null); // most of the time createContext default is null
+
 function App() {
   const [user, setUser] = useState();
   return (
     <BrowserRouter>
+      <UserContext.Provider value={{user, setUser}} >
       <Layout className='layout'>
         <Header>
           <Menubar />
@@ -26,6 +29,7 @@ function App() {
           </Routes>
         </Content>
       </Layout>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
