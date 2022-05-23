@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route path='/restaurants/:restaurantId' element={<RestaurantPage />} />
             <Route path='/random' element={<h1>Random</h1>} />
-            <Route path='/add' element={!user ?  <Login setUser={setUser} /> : <h1>Add Restaurant</h1>} />
+            <Route path='/add' element={!user ?  <Login /> : <h1>Add Restaurant</h1>} />
             <Route path='/' element={<RestaurantList />} />
           </Routes>
         </Content>
