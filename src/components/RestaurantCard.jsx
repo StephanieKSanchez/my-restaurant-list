@@ -14,7 +14,7 @@ export default function RestaurantCard({ restaurant }) {
         onClick={() => navigate(`/restaurants/${restaurant.id}`)}
         cover={restaurant && <img alt={`Typical meal at ${restaurant.name}`} src={restaurant.image} />}
         hoverable>
-        <Meta title={restaurant?.name} description={restaurant?.address} />
+        <Meta title={restaurant?.name} description={restaurant?.address} rating={restaurant?.rating} />
         {user && <Rate />}
       </Card>
     </Col>
